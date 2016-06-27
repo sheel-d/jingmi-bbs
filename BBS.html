@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BBS</title>
+	<link rel="stylesheet" href="css/BBS/BBS.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/BBS/common.js"></script>
+	<script src="js/BBS/BBS.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="header_box">
+			<div class="header_jm_user">
+				<span class="header_username">
+					<em></em><i></i>
+				</span>
+				<a href="http:www.jingmi.date" class="header_index"><span>静谧网首页</span></a>
+				<div class="header_username_list">
+					<ul>
+						<li>
+							<span>个人中心</span>
+						</li>
+						<li>
+							<span>退出</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header_serve">
+				<a href="">
+					<span>个人中心</span>
+					<i>|</i>
+				</a>
+				<a href="#">
+					<span>静谧论坛</span>
+					<i>|</i>
+				</a>
+				<a href="#">
+					<span>网站服务</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="header_personal">
+		<div class="header_personal_box">
+			<h2>静谧论坛</h2>
+			<div class="user_list">
+				<div class="user_img">
+					<img src="img/BBS/user_img.jpg">
+				</div>
+				<div class="user_name">
+					<span>用户名</span>
+				</div>
+				<div class="user_login">
+					<a href="http://localhost:8080/home-web/login.html?data=BBS">
+						<span>登录</span>
+						<i>|</i>
+					</a>
+					<a href="http://localhost:8080/home-web/register.html">
+						<span>免费注册</span>
+					</a>
+				</div>
+				<div class="user_channel">
+					<span>我的快捷通道</span>
+					<i></i>
+				</div>
+				<div class="user_channel_list">
+					<ul>
+						<li>我的贴子</li>
+						<li>我的积分</li>
+						<li>我的关注</li>
+						<li>我的收藏</li>
+						<li>我的消息</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="jm_bbs_dir">
+			<img src="img/BBS/home.gif">
+			<a href="http:www.jingmi.date">
+				<span>静谧首页</span>
+			</a>
+			<i>></i>
+			<a href="#">
+				<span>静谧论坛</span>
+			</a>
+			<ul class="jm_bbs_paste">
+				<li>最新帖子</li>
+				<li>精华区</li>
+			</ul>
+		</div>
+		<div class="jm_bbs_main">
+			<div class="jm_bbs_main_top">
+				<h3>静谧论坛</h3>
+				<ul>
+					<li>
+						<a href="#">
+							<img src="img/BBS/shoucang.png">
+							<span>收藏</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/BBS/dingyuan.png">
+							<span>订阅</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/BBS/quanxian.png">
+							<span>权限</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="jm_bbs_main_center">
+				<p>今日：<span>num</span>主题：<span>num</span>贴数：<span>num</span></p>
+			</div>
+			<div class="BBS_announcement">
+				<p>论坛公告</p>
+				<span>收起</span>
+				<img src="img/BBS/cate_fold.gif">
+			</div>
+			<div class="announcement">
+				<span>亲爱的论坛用户：</span>
+				<p></p>
+				<p></p>
+			</div>
+			<div class="jm_bbs_main_bottom">
+				<div class="jm_bbs_main_bottom_paging">
+					<div class="pageFirst">
+						<input type="text" placeholder="搜索其实很简单! (^_^)" />
+						<span>
+							<i></i><i></i>
+						</span>
+					</div>
+					<p class="jm_bbs_main_bottom_pagingRight">
+						<span>发表主题</span>
+					</p>
+					<div class="paste_type">
+						<p><a href="">新贴</a></p>
+						<p>我的贴子</p>
+					</div>
+				</div>
+				<div class="jm_bbs_main_bottom_centent">
+					<div class="tabA">
+						<ul>
+							<li class="active">全部</li>
+							<li>精华</li>
+							<li>置顶</li>
+							<li>热门</li>
+						</ul>
+					</div>
+					<div class="bbs_main">
+						<div class="bbs_main_nav">
+							<ul>
+								<li class="font">全部</li>
+								<li>情感交流</li>
+								<li>问答</li>
+								<li>讨论</li>
+								<li>娱乐</li>
+								<li>生活</li>
+								<li>趣味</li>
+								<li>文学</li>
+							</ul>
+						</div>
+						<div class="bbs_main_cen">
+							<p class="bbs_main_cen_p">
+								<i>排序：</i>
+								<span>最新发帖</span>|
+								<span class="col">最后回复</span>
+							</p>
+							<div class="box"></div>
+							<div class="bbs_main_buttom"></div>
+						</div>
+					</div>
+				</div>
+				<div class="jm_bbs_main_bottom_paging">
+					<div class="jm_bbs_main_bottom_pagingLeft"></div>
+					<p class="jm_bbs_main_bottom_pagingRight">
+						<span>发表主题</span>
+					</p>
+					<div class="paste_type">
+						<p>新贴</p>
+						<p>我的贴子</p>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div id="footer">
+		<span>Copyright © 2016  静谧网</span>
+	</div>
+	<div id="mark"></div>
+	<div class="popup">
+		<p>欢迎来到静谧论坛</p>
+		<p>论坛别名：</p>
+		<p>
+			<input type="text" placeholder="请输入论坛别名" /><i></i>
+			<span></span>
+		</p>
+		<p>验证码：</p>
+		<p>
+			<input type="text" placeholder="请输入验证码" />
+			<img />
+			<i></i>
+			<span></span>
+		</p>
+		<p>
+			<span>确定</span>
+		</p>
+	</div>
+</body>
+</html>

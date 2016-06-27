@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>personal</title>
+	<link rel="stylesheet" href="css/BBS/personal.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/BBS/common.js"></script>
+	<script src="js/BBS/personal.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="header_box">
+			<div class="header_jm_user">
+				<span class="header_username">
+					<em></em><i></i>
+				</span>
+				<a href="http:www.jingmi.date" class="header_index"><span>静谧网首页</span></a>
+				<div class="header_username_list">
+					<ul>
+						<li>
+							<span>个人中心</span>
+						</li>
+						<li>
+							<span>退出</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header_serve">
+				<a href="">
+					<span>个人中心</span>
+					<i>|</i>
+				</a>
+				<a href="#">
+					<span>静谧论坛</span>
+					<i>|</i>
+				</a>
+				<a href="#">
+					<span>网站服务</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="header_personal">
+		<div class="header_personal_box">
+			<h2>静谧论坛</h2>
+			<div class="user_list">
+				<div class="user_img">
+					<img src="img/BBS/user_img.jpg">
+				</div>
+				<div class="user_name">
+					<span></span>
+				</div>
+				<div class="user_login">
+					<a href="http://localhost:8080/home-web/login.html?data=BBS">
+						<span>登录</span>
+						<i>|</i>
+					</a>
+					<a href="http://localhost:8080/home-web/register.html">
+						<span>免费注册</span>
+					</a>
+				</div>
+				<div class="user_channel">
+					<span>我的快捷通道</span>
+					<i></i>
+				</div>
+				<div class="user_channel_list">
+					<ul>
+						<li>我的贴子</li>
+						<li>我的积分</li>
+						<li>我的关注</li>
+						<li>我的收藏</li>
+						<li>我的消息</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="jm_bbs_dir">
+			<img src="img/BBS/home.gif">
+			<a href="http:www.jingmi.date">
+				<span>静谧首页</span>
+			</a>
+			<i>></i>
+			<a href="#">
+				<span>静谧论坛</span>
+			</a>
+			<i>></i>
+			<span>帖子标题</span>
+		
+		</div>
+		<div class="theme">
+			<a href="#per_domRight"><span class="active">回复主题</span></a>
+			<span>发表主题</span>
+			<ul>
+				<li>新帖</li>
+				<li>我的帖子</li>
+			</ul>
+		</div>
+		<div class="post_read">
+			<p>
+				<b>num</b><br />
+				<span>阅读</span>
+			</p>
+			<p>
+				<b>num</b><br />
+				<span>回复</span>
+			</p>
+			<h3>帖子标题</h3>
+		</div>
+		<div class="per_post">
+			<div class="per_postLeft">
+				<img src="img/BBS/user_img.jpg"><br />
+				<a href="#">作者</a><br />
+				<span>级别:</span>
+				<span>菜鸟</span>
+				<p>
+					<span>发帖:</span>
+					<b>num</b>
+				</p>
+				<p>
+					<span>金钱:</span>
+					<b>num</b>
+				</p>
+			</div>
+			<div class="per_postRight">
+				<p>
+					<span>楼主：发表于</span><b>时间</b>
+				</p>
+				<div class="per_post_cen img-w-h">
+					发帖的内容
+				</div>
+				<div class="per_btn">
+					<span class="btn">评分</span>
+					<span>☆收藏</span>
+				</div>
+			</div>
+		</div>
+		<div class="per_comment"></div>
+		<div class="per_page"></div>
+		<div class="per_dom">
+			<div class="per_domLeft">
+				<p>用户名</p>
+				<img src="img/BBS/user_img.jpg">
+			</div>
+			<div class="per_domRight" id="per_domRight">
+				<div class="post_type_main">
+					<form action="savePosting.do" method="POST">
+						<script id="editor" type="text/plain" style="width:800px;height:100px;"></script>
+					</form>
+					<script type="text/javascript" charset="utf-8" src="ueditor2.config.js"></script>
+					<script type="text/javascript" charset="utf-8" src="ueditor.all.min.js"> </script>
+					<script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>
+					<script type="text/javascript">
+						var ue = UE.getEditor('editor');
+					</script>
+				</div>
+				<p>
+					<span>验证码：</span>
+					<img src="#">
+					<input type="text">
+					<i></i>
+					<em>输入错误</em>
+				</p>
+				<strong onclick="getContent()">发布</strong>
+			</div>
+			<script>
+				var str = window.location.href;
+    			var obj = add(str,'&');
+
+				var $num = null;
+				$('.per_post_hf').delegate('a','click',function(){
+					$num = $(this).attr('title');
+					window.location.href = window.location.href + '#per_domRight';
+				});
+
+				function getContent(){
+					var arr = [];
+					arr.push(UE.getEditor('editor').getContent());
+					var cen = String(arr);
+					$.ajax({
+						url : 'replySave.do',
+						data : {
+							postingId : obj.id,
+							build: $num,
+							content : cen
+						},
+			        	type : 'post',
+						success : function(data){
+							if(data == 1 ){
+								window.location = "personal.html";	
+							}else{
+								window.location = "wei-login.html";
+							}		
+						},
+						error : function(err){
+					        console.log(err.status);
+					    }
+					});
+				}
+			</script>
+		</div>
+	</div>
+	<div id="footer">
+		<span>Copyright © 2016  静谧网</span>
+	</div>
+	<div id="mark"></div>
+	<div class="success">
+		<p>温馨提示：</p>
+		<p>帖子收藏成功</p>
+		<span>关闭</span>
+	</div>
+</body>
+</html>

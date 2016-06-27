@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>posting</title>
+	<link rel="stylesheet" href="css/BBS/posting.css">
+	<script src="js/jquery.js"></script>
+	<script src="js/BBS/common.js"></script>
+	<script src="js/BBS/posting.js"></script>
+</head>
+<body>
+	<div id="header">
+		<div class="header_box">
+			<div class="header_jm_user">
+				<span class="header_username">
+					<em></em><i></i>
+				</span>
+				<a href="http:www.jingmi.date" class="header_index"><span>静谧网首页</span></a>
+				<div class="header_username_list">
+					<ul>
+						<li>
+							<span>个人中心</span>
+						</li>
+						<li>
+							<span>退出</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="header_serve">
+				<a href="">
+					<span>个人中心</span>
+					<i>|</i>
+				</a>
+				<a href="#">
+					<span>静谧论坛</span>
+					<i>|</i>
+				</a>
+				<a href="#">
+					<span>网站服务</span>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="header_personal">
+		<div class="header_personal_box">
+			<h2>静谧论坛</h2>
+			<div class="user_list">
+				<div class="user_img">
+					<img src="img/BBS/user_img.jpg">
+				</div>
+				<div class="user_name">
+					<span></span>
+				</div>
+				<div class="user_login">
+					<a href="http://localhost:8080/home-web/login.html?data=BBS">
+						<span>登录</span>
+						<i>|</i>
+					</a>
+					<a href="http://localhost:8080/home-web/register.html">
+						<span>免费注册</span>
+					</a>
+				</div>
+				<div class="user_channel">
+					<span>我的快捷通道</span>
+					<i></i>
+				</div>
+				<div class="user_channel_list">
+					<ul>
+						<li>我的贴子</li>
+						<li>我的积分</li>
+						<li>我的关注</li>
+						<li>我的收藏</li>
+						<li>我的消息</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="content">
+		<div class="jm_bbs_dir">
+			<img src="img/BBS/home.gif">
+			<a href="http:www.jingmi.date">
+				<span>静谧首页</span>
+			</a>
+			<i>></i>
+			<a href="#">
+				<span>静谧论坛</span>
+			</a>
+			<i>></i>
+			<span>发表帖子</span>
+		</div>
+		<div class="posting_main">
+			<div class="post_main_top">
+				<span>发表帖子：</span>
+				<input type="button" value="发帖" onclick="getContent()" />
+			</div>
+			<div class="post_main_botton">
+				<div class="post_main_wrap">
+					<div class="post_type">
+						<div class="post_type_left">
+							<b>发帖类型：</b><strong><span>生活</span><i></i></strong>
+							<ul>
+								<li>生活</li>
+								<li>情感交流</li>
+								<li>问答</li>
+								<li>讨论</li>
+								<li>娱乐</li>
+								<li>生活</li>
+								<li>趣味</li>
+								<li>文学</li>
+							</ul>
+						</div>
+						<div class="post_type_right">
+							<input type="text">
+						</div>
+					</div>
+					<p class="wrap_cen">内容：</p>
+					<div class="post_type_main">
+						<form action="savePosting.do" method="POST">
+							<script id="editor" type="text/plain" style="width:100%;height:500px;"></script>
+						</form>
+						<script type="text/javascript" charset="utf-8" src="ueditor.config.js"></script>
+   	 					<script type="text/javascript" charset="utf-8" src="ueditor.all.min.js"> </script>
+    					<script type="text/javascript" charset="utf-8" src="lang/zh-cn/zh-cn.js"></script>
+						<script type="text/javascript">
+						    var ue = UE.getEditor('editor');
+						</script>
+					</div>
+					<div class="post_type_footer">
+						<p>
+							<input type="checkbox">匿名帖
+						</p>
+						<p>
+							<span>输入验证码：</span>
+							<img src="#">
+							<input type="text" class="text">
+							<i></i>
+							<em>输入错误</em>
+						</p>
+						<p>
+							<input type="button" value="发布" class="btn1 btn" onclick="getContent()" />
+						</p>
+						<script>
+							function getContent() {
+								var $type = $('.post_type_left span').text();
+								var $title = $('.post_type_right input').val();
+						        var arr = [];
+						        arr.push(UE.getEditor('editor').getContent());
+						        if( $type != '' && $title != '' && arr.length >= 0){
+						        	$.ajax({
+								       	url : "savePosting.do",
+								        data : {
+								        	content : String(arr),
+								        	type : $type,
+								        	title : $title
+								        },
+								        success : function(data){
+											if(data == 1){
+												window.location = 'http://localhost:8080/bbs-web/BBS.html';
+											}else{
+												window.location = 'wei-login.html';
+											}
+										},
+										error : function(err){
+										    console.log(err.status);
+										}
+								    });
+						        }else{
+						        	alert('输入完整的内容');
+						        }    
+						    }
+						</script>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<span>Copyright © 2016  静谧网</span>
+	</div>
+</body>
+</html>
